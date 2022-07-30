@@ -2,7 +2,6 @@ import React from "react";
 import { UserInforProps } from "../WorkSpace/UserInfor";
 import photoImage from './userphoto.png';
 
-
 export default class EditUser extends React.PureComponent<UserInforProps>
 {
     render()

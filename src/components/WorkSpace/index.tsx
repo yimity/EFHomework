@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from 'react-redux';
 import UserInfors from "./UserInfors";
 import { UserInforProps } from './UserInfor';
@@ -22,27 +22,23 @@ class WorkSpaceBase extends React.PureComponent<UserState & { dispatch: any }> {
 
     componentDidMount() {
         const { dispatch } = this.props;
-        console.log('workspace--',this.props);
         dispatch(userActionCreators.getUserList(1, 10));
     }
 
     render() {
         const chance = new Chance();
         const {users:userList} =this.props;
-        console.log('WorkSpaceBase===',this.props,userList);
         return (
             <div className="user-workspace">
                 <WskTopBar />
                 <UserInfors users={userList} />
-                {/* <UserDialog  {...defaultUsers[chance.integer({ min: 0, max: 5 })]} /> */}
+                <UserDialog  {...defaultUsers[chance.integer({ min: 0, max: 5 })]} />
             </div>
         );
     }
 };
 
 const mapStateToProps = (state:UserState)=>{
-
-    console.log('state>>>',state);
     return {users:state.users};
 }
 

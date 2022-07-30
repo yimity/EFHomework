@@ -10,8 +10,6 @@ export interface UserInforsProps {
 export default class UserInfors extends React.PureComponent<UserInforsProps>
 {
     render() {
-
-        console.log('UserInfors=>>>>', this.props);
         const { users } = this.props;
         return (
             <div className="container-fluid text-left card user-infors-grid" style={{ height: '80%' }}>
