@@ -48,9 +48,9 @@ class TablefooterBase extends React.PureComponent<UserState & { dispatch: any }>
                         Total: <span>{userCount}</span>
                     </span>
                 </div>
-                <div className="">
-                    <ul className="pagination">
-                        <li key="prev" className={`page-item ${minPage === 1 ? 'disabled' : ''}`} onClick={() => minPage !== 1 && this.goToPage(pageIndex - 1)}>
+                {/* <div className=""> */}
+                    <ul className="pagination d-flex align-items-center">
+                        <li key="prev" className={`page-item ${minPage === 1 ? 'disabled' : ''}`} onClick={() => pageIndex !== 1 && this.goToPage(pageIndex - 1)}>
                             <a className="page-link border-0">Prev</a>
                         </li>
                         {
@@ -70,11 +70,11 @@ class TablefooterBase extends React.PureComponent<UserState & { dispatch: any }>
                                 <a className="page-link text-center page-number" href="#">...</a>
                             </li>
                         }
-                        <li key="next" className={`page-item ${maxPage === pageCount ? 'disabled' : ''}`}  onClick={() => maxPage !== pageCount && this.goToPage(pageIndex + 1)}>
+                        <li key="next" className={`page-item ${maxPage === pageCount ? 'disabled' : ''}`}  onClick={() => pageIndex !== pageCount && this.goToPage(pageIndex + 1)}>
                             <a className="page-link border-0" href="#">Next</a>
                         </li>
                     </ul>
-                </div>
+                {/* </div> */}
             </div>);
     }
 };

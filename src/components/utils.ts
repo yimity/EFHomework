@@ -21,8 +21,7 @@ export function pagination(pageCount: number, displayPageCount: number, pageInde
         maxPage = pageCount;
     }
 
-    if(maxPage === pageCount)
-    {
+    if (maxPage === pageCount) {
         minPage = maxPage - displayPageCount + 1;
         if (minPage < 1) {
             minPage = 1;
@@ -35,11 +34,9 @@ export function pagination(pageCount: number, displayPageCount: number, pageInde
     };
 }
 
-export function GetSequence(minPage: number, maxPage: number)
-{
-    const numbers =[];
-    for(let i=minPage;i<=maxPage;i++)
-    {
+export function GetSequence(minPage: number, maxPage: number) {
+    const numbers = [];
+    for (let i = minPage; i <= maxPage; i++) {
         numbers.push(i);
     }
     return numbers;
