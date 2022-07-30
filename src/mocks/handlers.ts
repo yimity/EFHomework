@@ -79,14 +79,14 @@ export const handlers = [
         take: pageSize,
         skip: (pageIndex - 1) * pageSize,
         where: {
-          name: {
+          firstName: {
             contains: searchText,
           },
         },
       });
       total = db.user.count({
         where: {
-          name: {
+          firstName: {
             contains: searchText,
           },
         },

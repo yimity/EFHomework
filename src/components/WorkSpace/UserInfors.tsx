@@ -10,10 +10,12 @@ export interface UserInforsProps {
 export default class UserInfors extends React.PureComponent<UserInforsProps>
 {
     render() {
+
+        console.log('UserInfors=>>>>', this.props);
         const { users } = this.props;
         return (
             <div className="container-fluid text-left card user-infors-grid" style={{ height: '80%' }}>
-                <div className="row bg-light lh-lg card-header grid-header" >
+                <div className="row bg-light lh-lg card-header grid-header" key="headers">
                     <div className="col-3 d-flex align-items-center h-col-name">
                         <div className="col-1 d-flex align-items-center">
                             <input type="checkbox" className="form-check-input" id="CheckAll" />

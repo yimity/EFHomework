@@ -1,13 +1,13 @@
-import{Reducer}from 'redux';
+import { Reducer } from 'redux';
 import { UserState } from './interfaces';
 import { UserAction } from './actions';
-import * as update from 'immutability-helper';
+import update from 'immutability-helper';
 
 const defaultState: UserState = {
     users: [],
 };
 
-export const userReducer: Reducer<UserState> = (state: UserState = defaultState, action: UserAction) => {
+export const userReducer: Reducer<UserState,UserAction> = (state: UserState = defaultState, action: UserAction) => {
     switch (action.type) {
         case 'User/Users':
             return update(state, { users: { $set: action.payload.users } });

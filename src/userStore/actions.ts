@@ -16,6 +16,7 @@ export const userSagaTypes = {
 };
 
 export const  userActionCreators ={
+    getUserList,
     setUserPageInfor,
     setUserInfor,
 };

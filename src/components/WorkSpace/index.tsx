@@ -1,12 +1,14 @@
-import { Fragment } from "react";
+import React from "react";
+import { connect } from 'react-redux';
 import UserInfors from "./UserInfors";
 import { UserInforProps } from './UserInfor';
 import WskTopBar from './WorkSpaceTopBar';
 import UserDialog from  '../EditUser';
 import './workspace.scss';
 import { Chance } from 'chance';
+import {userActionCreators,UserState} from '../../userStore';
 
-const users: UserInforProps[] = [
+const defaultUsers: UserInforProps[] = [
     { id: '1', firstName: 'Amanda', lastName: 'Harvey', mail: 'amanda@site.com', position: 'Director', department: 'Human resources', country: 'United Kingdom', status: 'Active', porifolio: 72, role: 'Employee' },
     { id: '2', firstName: 'Anne', lastName: 'Richard', mail: 'anne@site.com', position: 'Seller', department: 'Branding products', country: 'United States', status: 'Active', porifolio: 24, role: 'Employee' },
     { id: '3', firstName: 'Bran', lastName: 'Halligan', mail: 'bran@site.com', position: 'Director', department: 'Accounting', country: 'France', status: 'Active', porifolio: 71, role: 'Employee' },
@@ -16,13 +18,35 @@ const users: UserInforProps[] = [
 ];
 
 
-export default function WorkSpace() {
-    const chance = new Chance();
-    return (        
-        <div className="user-workspace">
-            <WskTopBar/>
-            <UserInfors users={users} />
-            <UserDialog  {...users[chance.integer({min:0,max:5})]}/>
-        </div>
-    );
+class WorkSpaceBase extends React.PureComponent<UserState & { dispatch: any }> {
+
+    componentDidMount() {
+        const { dispatch } = this.props;
+        console.log('workspace--',this.props);
+        dispatch(userActionCreators.getUserList(1, 10));
+    }
+
+    render() {
+        const chance = new Chance();
+        const {users:userList} =this.props;
+        console.log('WorkSpaceBase===',this.props,userList);
+        return (
+            <div className="user-workspace">
+                <WskTopBar />
+                <UserInfors users={userList} />
+                {/* <UserDialog  {...defaultUsers[chance.integer({ min: 0, max: 5 })]} /> */}
+            </div>
+        );
+    }
+};
+
+const mapStateToProps = (state:UserState)=>{
+
+    console.log('state>>>',state);
+    return {users:state.users};
 }
+
+ const WorkSpace = connect(mapStateToProps)(WorkSpaceBase) as React.ComponentClass<UserState>;
+
+ export default WorkSpace;
+ 

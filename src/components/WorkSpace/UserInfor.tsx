@@ -40,7 +40,7 @@ export default class UserInfor extends React.PureComponent<UserInforProps>
     render() {
         const { id, photo, firstName, lastName, mail, position, department, country, status, porifolio, role } = this.props;
         return (
-            <div className="row d-flex align-items-center row-data" id={id}>
+            <div className="row d-flex align-items-center row-data" id={id} key={id}>
                 <div className="col-3">
                     <div className="row">
                         <div className="col-1 d-flex align-items-center justify-content-end col-name-cb">
