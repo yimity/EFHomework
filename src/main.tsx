@@ -7,9 +7,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 import Home from './routes/home/home';
 //import UserManagement from './routes/user-management/components/user-management';
-import UserManagement from  './components/WorkSpace';
+import UserManagement from './components/WorkSpace';
 import UserDetail from './routes/user-management/routes/user-detail/';
-import { store } from './store';
+//import { store } from './store';
+import { store } from './userStore'
 
 
 export const prepare = () => {
