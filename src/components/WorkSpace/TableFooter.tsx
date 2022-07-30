@@ -14,6 +14,19 @@ const DISPLAY_PAGE_COUNT = 10;
 
 class TablefooterBase extends React.PureComponent<UserState & { dispatch: any }>{
 
+    private minPage:number;
+    private maxPage:number;
+    constructor(props)
+    {
+        super(props);
+        this.minPage = -1;
+        this.maxPage = -1;
+    }
+
+    isPageInRange=(index:number):boolean=>{
+        return index>=this.minPage && index <= this.maxPage;
+    }
+
     fixPageIndex = (pageIndex: number, pageCount: number): number => {
         if (pageIndex < 1) {
             pageIndex = 1;
@@ -37,9 +50,27 @@ class TablefooterBase extends React.PureComponent<UserState & { dispatch: any }>
         pageIndex = this.fixPageIndex(pageIndex, pageCount);
 
         const startIndex = (pageIndex - 1) * pageSize + 1;
-
-        const { minPage, maxPage } = pagination(pageCount, DISPLAY_PAGE_COUNT, pageIndex);
+        let minPage =-1;
+        let maxPage =-1;
+        
+        if(this.isPageInRange(pageIndex))
+        {
+            minPage = this.minPage;
+            maxPage = this.maxPage;
+        }
+        else
+        {
+            const range = pagination(pageCount, DISPLAY_PAGE_COUNT, pageIndex);
+            minPage = range.minPage;
+            maxPage = range.maxPage;
+            this.minPage = minPage;
+            this.maxPage = maxPage;
+        }
+         
+        
         const pages = GetSequence(minPage, maxPage);
+        
+        
         console.log(maxPage,pageCount);
         return (
             <div className="card-footer shadow-sm d-flex justify-content-between align-items-center grid-footer">
