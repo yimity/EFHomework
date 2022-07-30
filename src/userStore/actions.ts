@@ -12,14 +12,19 @@ const setUserInfor = (users: UserInfor[]): SetUserInfor => ({ type: 'User/Users'
 export interface SetUserCount{ type: 'User/UserCount'; payload:{userCount:number;}}
 const setUserCount = (userCount:number):SetUserCount=>({type: 'User/UserCount', payload:{userCount}});
 
+export interface DelUser { type: 'User/DelUser'; payload: { userId: string; } }
+const delUser = (userId: string): DelUser => ({ type: 'User/DelUser', payload: { userId } });
+
 export type UserAction = GetUserList | SetUserPageInfor |  SetUserInfor | SetUserCount;
 
 export const userSagaTypes = {
     UserGetUsers: 'User/GetUserList',
+    DelUser: 'User/DelUser',
 };
 
 export const userActionCreators ={
     getUserList,
+    delUser,
     setUserPageInfor,
     setUserInfor,
     setUserCount,

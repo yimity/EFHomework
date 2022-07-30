@@ -27,7 +27,7 @@ class WorkSpaceBase extends React.PureComponent<UserState & { dispatch: any }> {
 
     render() {
         const chance = new Chance();
-        const {users:userList} =this.props;
+        const {users:userList,dispatch} =this.props;
         return (
             <div className="user-workspace">
                 <WskTopBar />

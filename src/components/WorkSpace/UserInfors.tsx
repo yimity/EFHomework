@@ -5,6 +5,7 @@ import './userInfors.scss';
 
 export interface UserInforsProps {
     users: UserInforProps[];
+    dispatch:any;
 };
 
 export default class UserInfors extends React.PureComponent<UserInforsProps>
@@ -42,7 +43,7 @@ export default class UserInfors extends React.PureComponent<UserInforsProps>
                     </div>
                 </div>
 
-                {users.map(user => <UserInfor {...user} key={user.id}/>)}
+                {users.map(user => <UserInfor {...user} key={user.id} />)}
 
                 <Tablefooter />
             </div>

@@ -1,5 +1,5 @@
 import { result } from 'lodash';
-import {  put, takeEvery } from 'redux-saga/effects';
+import {  put, takeEvery,select } from 'redux-saga/effects';
 import * as actions from './actions';
 import {UserInfor}  from './interfaces';
 
@@ -17,6 +17,21 @@ function* getUserInfors(action: actions.GetUserList) {
   yield put(actions.userActionCreators.setUserPageInfor(action.payload.pageIndex,action.payload.pageSize));
 }
 
+function* delUser(action:actions.DelUser)
+{
+  let data = yield fetch(`users/${action.payload.userId}`,
+    {
+      method: 'DELETE'
+    }
+  ).then(result => result.json())
+    .then(res => res.data);
+
+    // const pageIndex = yield select(state=>state.pageIndex);
+    // const pageSize = yield select(state=>state.pageSize);
+    // actions.userActionCreators.getUserList(pageIndex,pageSize);
+}
+
 export function* watchUserInfor(){
     yield takeEvery(actions.userSagaTypes.UserGetUsers, getUserInfors);
+    yield takeEvery(actions.userSagaTypes.DelUser, delUser);
 }

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
-
+import { connect } from "react-redux";
 import * as DIC from '../dictionary';
+import {userActionCreators,UserState} from '../../userStore';
 
 export interface UserInforProps {
     id: string;
@@ -37,10 +38,22 @@ class Card  extends React.PureComponent<CardInforProps>
     }
 }
 
-export default class UserInfor extends React.PureComponent<UserInforProps>
+type ReduxProps = {
+    dispatch:any;
+}
+
+class UserInforBase extends React.PureComponent<UserInforProps&UserState&ReduxProps>
 {
+
+    delUser =(id :string):void=>{
+        const{dispatch,pageIndex,pageSize}= this.props;
+        dispatch(userActionCreators.delUser(id));
+        dispatch(userActionCreators.getUserList(pageIndex,pageSize));
+    }
+
     render() {
-        const { id, photo, firstName, lastName, mail, position, department, country, status, porifolio, role } = this.props;
+        const { id, photo, firstName, lastName, mail, position, department, country, status, porifolio, role,dispatch } = this.props;
+        //console.log(this.props);
         return (
             <div className="row d-flex align-items-center row-data" id={id} key={id}>
                 <div className="col-3">
@@ -83,9 +96,14 @@ export default class UserInfor extends React.PureComponent<UserInforProps>
                     <span>{DIC.GetRole(role)}</span>
                 </div>
                 <div className="col">
+                    <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" onClick={()=>this.delUser(id)}>Delete</button>
                     <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" data-bs-toggle="modal" data-bs-target="#ShowEditUserDialog">Edit</button>
                 </div>
             </div>
         );
     }
 }
+
+const UserInfor = connect(state => state)(UserInforBase) as React.ComponentClass<{}>;
+
+export default UserInfor;

@@ -1,13 +1,14 @@
 import React from "react";
 import { UserInforProps } from "../WorkSpace/UserInfor";
 import photoImage from './userphoto.png';
+import './userEdit.scss';
 
 export default class EditUser extends React.PureComponent<UserInforProps>
 {
     render()
     {
         const { id, photo, firstName,lastName, mail, position, department,country, status, porifolio, role } = this.props;
-        return <div className="modal modal-lg fade" id="ShowEditUserDialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        return <div className="modal modal-lg fade user-dialog" id="ShowEditUserDialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
