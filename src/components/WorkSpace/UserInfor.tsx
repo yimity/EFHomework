@@ -1,17 +1,19 @@
 import React, { Fragment } from "react";
 
+import * as DIC from '../dictionary';
+
 export interface UserInforProps {
     id: string;
     photo?: string;
     firstName: string;
     lastName: string;
     mail: string;
-    position: string;
-    department: string;
+    position: number;
+    department: number;
     country: string;
-    status: string;
+    status: number;
     porifolio: number;
-    role: string;
+    role: number;
 };
 
 interface CardInforProps{
@@ -57,13 +59,13 @@ export default class UserInfor extends React.PureComponent<UserInforProps>
                     </div>
                 </div>
                 <div className="col-2">
-                    <Card title={position} content={department} />
+                    <Card title={DIC.GetPosition(position)} content={DIC.GetDepartment(department)} />
                 </div>
                 <div className="col-2">
                     <span>{country}</span>
                 </div>
                 <div className="col">
-                    <span>{status}</span>
+                    <span>{DIC.GetStatus(status)}</span>
                 </div>
                 <div className="col-2">
                     <div className="row d-flex align-items-center">
@@ -78,7 +80,7 @@ export default class UserInfor extends React.PureComponent<UserInforProps>
                     </div>
                 </div>
                 <div className="col">
-                    <span>{role}</span>
+                    <span>{DIC.GetRole(role)}</span>
                 </div>
                 <div className="col">
                     <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" data-bs-toggle="modal" data-bs-target="#ShowEditUserDialog">Edit</button>

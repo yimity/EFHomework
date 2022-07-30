@@ -50,12 +50,12 @@ function generatorRandomUsers(count: number) {
         firstName: chance.first(),
         lastName: chance.last(),
         mail: chance.email(),
-        position: chance.integer({min:0,max:3}),
-        department: chance.integer({min:0,max:4}),
+        position: chance.integer({ min: 0, max: 3 }),
+        department: chance.integer({ min: 0, max: 4 }),
         country: chance.state(),
-        status: chance.integer({min:0,max:1}),
-        porifolio: chance.integer({min:0,max:100}),
-        role: chance.integer({min:0,max:1}),
+        status: chance.integer({ min: 0, max: 10 }) === 0 ? 0 : 1,
+        porifolio: chance.integer({ min: 0, max: 100 }),
+        role: chance.integer({ min: 0, max: 10 }) === 0 ? 0 : 1,
         _index: i,
       })
     );
