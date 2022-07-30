@@ -21,6 +21,8 @@ function* getUserInfors(action: actions.GetUserList) {
   //const data = yield result.json();
    console.log('---333',data);
   yield put(actions.userActionCreators.setUserInfor((data.data || [] )as UserInfor[]));
+  yield put(actions.userActionCreators.setUserCount(data.total));
+  yield put(actions.userActionCreators.setUserPageInfor(action.payload.pageIndex,action.payload.pageSize));
 }
 
 export function* watchUserInfor(){

@@ -44,7 +44,7 @@ export default class UserInfors extends React.PureComponent<UserInforsProps>
                     </div>
                 </div>
 
-                {users.map(user => <UserInfor {...user} />)}
+                {users.map(user => <UserInfor {...user} key={user.id}/>)}
 
                 <Tablefooter />
             </div>
