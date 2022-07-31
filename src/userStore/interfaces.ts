@@ -18,4 +18,6 @@ export interface UserState {
     pageSize: number;
     userCount: number;
     users: UserInfor[];
+    showUserDialog:boolean;
+    editUserId:string;
 }

@@ -1,19 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
 import { UserInforProps } from "../WorkSpace/UserInfor";
+import { UserState,userActionCreators } from "../../userStore";
 import photoImage from './userphoto.png';
 import './userEdit.scss';
 
-export default class EditUser extends React.PureComponent<UserInforProps>
+type ReduxProps = UserState & {dispatch:any};
+
+class EditDialigBase extends React.PureComponent<ReduxProps>
 {
     render()
     {
-        const { id, photo, firstName,lastName, mail, position, department,country, status, porifolio, role } = this.props;
-        return <div className="modal modal-lg fade user-dialog" id="ShowEditUserDialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
+        const { dispatch,users,editUserId} = this.props;
+        const editUser = users.find(user=>user.id === editUserId);
+        const {id, photo, firstName,lastName, mail, position, department,country, status, porifolio, role } = editUser || {};
+
+        const closeDialog = ()=>{
+            dispatch(userActionCreators.showEditUser(''));
+            dispatch(userActionCreators.showUserDialog(false));
+        };
+
+        return <div className="modal user-dialog" id="ShowEditUserDialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" >
+            <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h6 className="modal-title" id="exampleModalLabel">Edit User</h6>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h6 className="modal-title" id="exampleModalLabel">{editUserId?'Edit User':'Add User'}</h6>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={closeDialog}></button>
                     </div>
                     <div className="modal-body">
                         <ul className="nav nav-tabs">
@@ -87,7 +99,7 @@ export default class EditUser extends React.PureComponent<UserInforProps>
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={closeDialog}>Cancle</button>
                         <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                 </div>
@@ -95,3 +107,6 @@ export default class EditUser extends React.PureComponent<UserInforProps>
         </div>
     }
 }
+
+const UserDialog = connect(state=>state)(EditDialigBase);
+export default UserDialog;

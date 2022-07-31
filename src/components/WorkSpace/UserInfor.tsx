@@ -51,6 +51,12 @@ class UserInforBase extends React.PureComponent<UserInforProps&UserState&ReduxPr
         dispatch(userActionCreators.getUserList(pageIndex,pageSize));
     }
 
+    showEditUser =(id :string):void=>{
+        const{dispatch}= this.props;
+        dispatch(userActionCreators.showEditUser(id));
+        dispatch(userActionCreators.showUserDialog(true));
+    }
+
     render() {
         const { id, photo, firstName, lastName, mail, position, department, country, status, porifolio, role,dispatch } = this.props;
         //console.log(this.props);
@@ -97,7 +103,7 @@ class UserInforBase extends React.PureComponent<UserInforProps&UserState&ReduxPr
                 </div>
                 <div className="col">
                     <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" onClick={()=>this.delUser(id)}>Delete</button>
-                    <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" data-bs-toggle="modal" data-bs-target="#ShowEditUserDialog">Edit</button>
+                    <button type="button" className="btn btn-outline-secondary btn-sm mdi mdi-pencil edit-user-btn" onClick={()=>this.showEditUser(id)}>Edit</button>
                 </div>
             </div>
         );
