@@ -8,15 +8,29 @@ import RadioGroup from "../RadioGroup";
 import photoImage from './userphoto.png';
 import './userEdit.scss';
 
+
 type ReduxProps = UserState & {dispatch:any};
 
+const defaultUser:UserInfor = 
+{
+    id: '',
+    firstName: '',
+    lastName: '',
+    mail: '',
+    position: 0,
+    department: 0,
+    country: '',
+    status: 1,
+    porifolio: 67,
+    role: 1
+}
 
 function EditDialigBase(props:ReduxProps)
 {
     const { dispatch,users,editUserId} = props;
     const editUser = users.find(user=>user.id === editUserId);
 
-    const propsUser = editUser ? {...editUser} : {};
+    const propsUser = editUser ? {...editUser} : defaultUser;
     const [stateUser,setUser] = useState(propsUser);
 
     const {id, photo, firstName,lastName, mail, position, department,country, status, porifolio, role } = stateUser;
@@ -39,7 +53,14 @@ function EditDialigBase(props:ReduxProps)
     };
 
     const onSave = ()=>{
-        dispatch(userActionCreators.editUser(stateUser as UserInfor));
+        if( editUserId && stateUser.id === editUserId)
+        {
+            dispatch(userActionCreators.editUser(stateUser));
+        }
+        else{
+            dispatch(userActionCreators.addUser(stateUser));
+        }
+        
         closeDialog();
     }
 
@@ -106,7 +127,7 @@ function EditDialigBase(props:ReduxProps)
                         <div className="row mb-3">
                             <label htmlFor="inputCountry" className="col-sm-2 col-form-label">Country</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputCountry" value={country}/>
+                                <input type="text" className="form-control" id="inputCountry" value={country} onChange={(e)=>changeValueByName('country',e)}/>
                             </div>
                         </div>
                         <div className="row mb-3">

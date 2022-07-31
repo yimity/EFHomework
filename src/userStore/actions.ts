@@ -23,12 +23,16 @@ const showEditUser = (userId: string): ShowEditUser => ({ type: 'User/SowEditUse
 export interface ShowUserDialog {type: 'User/ShowUserDialog';payload:{showUserDialog:boolean;}}
 const showUserDialog = (isShowDialog:boolean):ShowUserDialog=>({type: 'User/ShowUserDialog',payload:{showUserDialog:isShowDialog}});
 
-export type UserAction = GetUserList | SetUserPageInfor |  SetUserInfor | SetUserCount | ShowUserDialog | ShowEditUser | EditUser;
+export interface AddUser {type: 'User/AddUser'; payload: { user: UserInfor; }}
+const addUser = (user: UserInfor): AddUser => ({ type: 'User/AddUser', payload: { user } });
+
+export type UserAction = GetUserList | SetUserPageInfor |  SetUserInfor | SetUserCount | ShowUserDialog | ShowEditUser | EditUser | AddUser;
 
 export const userSagaTypes = {
     UserGetUsers: 'User/GetUserList',
     DelUser: 'User/DelUser',
     EditUser: 'User/EditUser',
+    AddUser: 'User/AddUser',
 };
 
 export const userActionCreators ={
@@ -40,4 +44,5 @@ export const userActionCreators ={
     showEditUser,
     editUser,
     showUserDialog,
+    addUser,
 };

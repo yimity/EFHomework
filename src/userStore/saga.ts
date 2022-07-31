@@ -1,5 +1,6 @@
 import { result } from 'lodash';
 import {  put, takeEvery,select } from 'redux-saga/effects';
+import { UserState } from '.';
 import * as actions from './actions';
 import {UserInfor}  from './interfaces';
 
@@ -47,8 +48,28 @@ function* editUser(action:actions.EditUser)
     put(action);
 }
 
+function* AddUser(action:actions.AddUser)
+{
+  let data = yield fetch('users',
+    {
+      method: 'POST',
+      body:JSON.stringify(action.payload.user)
+    }
+  ).then(result => result.json())
+    .then(res => res.data);
+
+
+    const pageSize = yield select(state=>(state.pageSize));
+    const userCount = yield select(state=>(state.userCount));
+    const pageCount = Math.ceil((userCount+1)/pageSize);
+
+    const getUserAction = actions.userActionCreators.getUserList(pageCount,pageSize);
+    yield getUserInfors(getUserAction);
+}
+
 export function* watchUserInfor(){
     yield takeEvery(actions.userSagaTypes.UserGetUsers, getUserInfors);
     yield takeEvery(actions.userSagaTypes.DelUser, delUser);
     yield takeEvery(actions.userSagaTypes.EditUser, editUser);
+    yield takeEvery(actions.userSagaTypes.AddUser, AddUser);
 }
