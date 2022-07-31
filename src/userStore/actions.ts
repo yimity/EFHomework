@@ -23,7 +23,7 @@ const showEditUser = (userId: string): ShowEditUser => ({ type: 'User/SowEditUse
 export interface ShowUserDialog {type: 'User/ShowUserDialog';payload:{showUserDialog:boolean;}}
 const showUserDialog = (isShowDialog:boolean):ShowUserDialog=>({type: 'User/ShowUserDialog',payload:{showUserDialog:isShowDialog}});
 
-export type UserAction = GetUserList | SetUserPageInfor |  SetUserInfor | SetUserCount | ShowUserDialog | ShowEditUser;
+export type UserAction = GetUserList | SetUserPageInfor |  SetUserInfor | SetUserCount | ShowUserDialog | ShowEditUser | EditUser;
 
 export const userSagaTypes = {
     UserGetUsers: 'User/GetUserList',

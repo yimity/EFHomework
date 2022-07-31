@@ -31,7 +31,24 @@ function* delUser(action:actions.DelUser)
     // actions.userActionCreators.getUserList(pageIndex,pageSize);
 }
 
+function* editUser(action:actions.EditUser)
+{
+  let data = yield fetch(`users/${action.payload.user.id}`,
+    {
+      method: 'PUT',
+      body:JSON.stringify(action.payload.user)
+    }
+  ).then(result => result.json())
+    .then(res => res.data);
+
+    // const pageIndex = yield select(state=>state.pageIndex);
+    // const pageSize = yield select(state=>state.pageSize);
+    // actions.userActionCreators.getUserList(pageIndex,pageSize);
+    put(action);
+}
+
 export function* watchUserInfor(){
     yield takeEvery(actions.userSagaTypes.UserGetUsers, getUserInfors);
     yield takeEvery(actions.userSagaTypes.DelUser, delUser);
+    yield takeEvery(actions.userSagaTypes.EditUser, editUser);
 }

@@ -24,6 +24,12 @@ export const userReducer: Reducer<UserState, UserAction> = (state: UserState = d
             return update(state, { showUserDialog: { $set: action.payload.showUserDialog } });
         case 'User/SowEditUser':
             return update(state, { editUserId: { $set: action.payload.userId } });
+        case 'User/EditUser':
+            {
+                const index = state.users.findIndex(user => user.id === action.payload.user.id);
+                return update(state, { users: { $splice: [[index, 1, action.payload.user]] } });
+            }
+            
     }
     return state;
 }
