@@ -1,11 +1,9 @@
-import React, { Fragment } from "react";
+import React from 'react';
 import { connect } from 'react-redux';
 import UserInfors from "./UserInfors";
-import { UserInforProps } from './UserInfor';
 import WskTopBar from './WorkSpaceTopBar';
 import UserDialog from  '../EditUser';
 import './workspace.scss';
-import { Chance } from 'chance';
 import {userActionCreators,UserState} from '../../userStore';
 
 // const defaultUsers: UserInforProps[] = [
@@ -26,9 +24,7 @@ class WorkSpaceBase extends React.PureComponent<UserState & { dispatch: any }> {
     }
 
     render() {
-        const chance = new Chance();
         const {users,showUserDialog,dispatch} =this.props;
-        console.log('state',this.props);
         return (
             <div className="user-workspace">
                 <WskTopBar dispatch={dispatch}/>

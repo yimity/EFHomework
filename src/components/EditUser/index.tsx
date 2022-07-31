@@ -7,6 +7,7 @@ import DropdownList from "../DropdownList";
 import RadioGroup from "../RadioGroup";
 import photoImage from './userphoto.png';
 import './userEdit.scss';
+import SelectBox from "../SelectBox";
 
 
 type ReduxProps = UserState & {dispatch:any};
@@ -114,14 +115,15 @@ function EditDialigBase(props:ReduxProps)
                             <label htmlFor="inputPosition" className="col-sm-2 col-form-label">Position</label>
                             <div className="col-sm-10">
                                 {/* <input type="text" className="form-control" id="inputPosition" value={position}/> */}
-                                <DropdownList key="position" items={Positions} value={position} OnSelChanged={(value)=>changeNumValueByName('position',value)}/>
+                                {/* <DropdownList key="position" items={Positions} value={position} onSelChanged={(value)=>changeNumValueByName('position',value)}/> */}
+                                <SelectBox key="position" items={Positions} value={position} onSelChanged={(value)=>changeNumValueByName('position',value)}/>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label htmlFor="inputDepartment" className="col-sm-2 col-form-label">Department</label>
                             <div className="col-sm-10">
                                 {/* <input type="text" className="form-control" id="inputDepartment" value={department}/> */}
-                                <DropdownList key="department" items={Departments} value={department} OnSelChanged={(value)=>changeNumValueByName('department',value)}/>
+                                <DropdownList key="department" items={Departments} value={department} onSelChanged={(value)=>changeNumValueByName('department',value)}/>
                             </div>
                         </div>
                         <div className="row mb-3">

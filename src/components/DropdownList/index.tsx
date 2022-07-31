@@ -4,12 +4,12 @@ import {DicItem,GetItemValue} from '../dictionary';
 export interface DropdownListProps {
     items: DicItem[];
     value: number;
-    OnSelChanged: (value: number) => void;
+    onSelChanged: (value: number) => void;
 }
 
 function DropdownList(props:DropdownListProps)
 {
-    const {items,value,OnSelChanged}=props;
+    const {items,value,onSelChanged}=props;
 
     const getValue = (key:number):string=>{
         return GetItemValue(items,value);
@@ -24,7 +24,7 @@ function DropdownList(props:DropdownListProps)
             {/* <li><a className="dropdown-item" href="#">Action</a></li>
             <li><a className="dropdown-item" href="#">Another action</a></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li> */}
-            {items.map(item => <li key={item.key} onClick={() => OnSelChanged(item.key)}>
+            {items.map(item => <li key={item.key} onClick={() => onSelChanged(item.key)}>
                 <a className="dropdown-item" href="#">{item.value}</a>
             </li>)}
         </ul>
