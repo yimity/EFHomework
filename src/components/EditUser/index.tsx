@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { UserInforProps } from "../WorkSpace/UserInfor";
 import { UserState,userActionCreators, UserInfor } from "../../userStore";
-import {Positions,Departments} from '../dictionary';
+import {Positions,Departments,Status,Roles} from '../dictionary';
 import DropdownList from "../DropdownList";
+import RadioGroup from "../RadioGroup";
 import photoImage from './userphoto.png';
 import './userEdit.scss';
 
@@ -111,13 +112,15 @@ function EditDialigBase(props:ReduxProps)
                         <div className="row mb-3">
                             <label htmlFor="inputStatus" className="col-sm-2 col-form-label">Status</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputStatus" value={status}/>
+                                {/* <input type="text" className="form-control" id="inputStatus" value={status}/> */}
+                                <RadioGroup key="status" groupName="status" items={Status} value={status} OnSelChanged={(value)=>changeNumValueByName('status',value)}/>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label htmlFor="inputRole" className="col-sm-2 col-form-label">Role</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputRole" value={role}/>
+                                {/* <input type="text" className="form-control" id="inputRole" value={role}/> */}
+                                <RadioGroup key="role" groupName="role" items={Roles} value={role} OnSelChanged={(value)=>changeNumValueByName('role',value)}/>
                             </div>
                         </div>
                     </form>
