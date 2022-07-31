@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { UserInforProps } from "../WorkSpace/UserInfor";
 import { UserState,userActionCreators, UserInfor } from "../../userStore";
+import {Positions,Departments} from '../dictionary';
+import DropdownList from "../DropdownList";
 import photoImage from './userphoto.png';
 import './userEdit.scss';
 
@@ -26,6 +28,12 @@ function EditDialigBase(props:ReduxProps)
     const changeValueByName = (name: string, e) => {
         const newUser = { ...stateUser };
         newUser[name] = e.target.value;
+        setUser(newUser);
+    };
+
+    const changeNumValueByName = (name: string, value:number) => {
+        const newUser = { ...stateUser };
+        newUser[name] = value;
         setUser(newUser);
     };
 
@@ -83,13 +91,15 @@ function EditDialigBase(props:ReduxProps)
                         <div className="row mb-3">
                             <label htmlFor="inputPosition" className="col-sm-2 col-form-label">Position</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputPosition" value={position}/>
+                                {/* <input type="text" className="form-control" id="inputPosition" value={position}/> */}
+                                <DropdownList key="position" items={Positions} value={position} OnSelChanged={(value)=>changeNumValueByName('position',value)}/>
                             </div>
                         </div>
                         <div className="row mb-3">
                             <label htmlFor="inputDepartment" className="col-sm-2 col-form-label">Department</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputDepartment" value={department}/>
+                                {/* <input type="text" className="form-control" id="inputDepartment" value={department}/> */}
+                                <DropdownList key="department" items={Departments} value={department} OnSelChanged={(value)=>changeNumValueByName('department',value)}/>
                             </div>
                         </div>
                         <div className="row mb-3">
