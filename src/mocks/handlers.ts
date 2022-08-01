@@ -1,4 +1,4 @@
-import { factory, nullable, primaryKey } from '@mswjs/data';
+import { factory, primaryKey } from '@mswjs/data';
 import { Chance } from 'chance';
 import { rest } from 'msw';
 
@@ -11,12 +11,13 @@ const db = factory({
   user: {
     id: primaryKey(String),
     name: String,
-    gender: Number,
-    birthday: String,
-    age: Number,
     email: String,
-    phone: nullable(String),
-    _index: Number,
+    position: String,
+    positionTitle: String,
+    country: String,
+    status: String,
+    portfolio: Number,
+    role: String,
   },
 });
 
@@ -28,18 +29,49 @@ function generatorRandomUsers(count: number) {
       db.user.create({
         id: chance.guid(),
         name: chance.name(),
-        gender: chance.gender() === 'Female' ? 1 : 0,
-        birthday: chance.birthday().toUTCString(),
-        age: chance.age(),
         email: chance.email(),
-        phone: chance.phone(),
-        _index: i,
+        position: getPosition(),
+        positionTitle: getPositonTitle(),
+        country: chance.country({ full: true }),
+        status: Math.floor(Math.random() * 2) === 1 ? 'Active' : 'Pending',
+        portfolio: Math.floor(Math.random() * 101),
+        role: Math.floor(Math.random() * 2) === 1 ? 'Employee' : 'Owner',
       })
     );
   }
 }
 
-generatorRandomUsers(599);
+function getPosition() {
+  switch (Math.floor(Math.random() * 4)) {
+    case 0:
+      return 'Director';
+    case 1:
+      return 'Seller';
+    case 2:
+      return 'Developer';
+    default:
+      return 'Co-founder';
+  }
+}
+
+function getPositonTitle() {
+  switch (Math.floor(Math.random() * 6)) {
+    case 0:
+      return 'Human resources';
+    case 1:
+      return 'Branding products';
+    case 2:
+      return 'Accounting';
+    case 3:
+      return 'Branding products';
+    case 4:
+      return 'IT department'
+    default:
+      return 'Mobile app';
+  }
+}
+
+generatorRandomUsers(20);
 
 export const handlers = [
   rest.get(`/users`, (req, res, ctx) => {

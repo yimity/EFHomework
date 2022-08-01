@@ -1,11 +1,13 @@
 export type User = {
   id: string;
   name: string;
-  gender: 0 | 1;
-  birthday: string;
-  age: number;
   email: string;
-  phone?: string;
+  position: string;
+  positionTitle: string;
+  country: string;
+  status: 'Active' | 'Pending';
+  portfolio: number;
+  role: 'Employee' | 'Owner';
 };
 
 export type ServiceResponse<T> = {
