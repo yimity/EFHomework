@@ -1,5 +1,9 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { useGetUsersQuery } from '../rtk';
+import EditUserPage from './EditUserPage';
+import Footer from './Footer';
+import Main from './Main';
 
 type UserManagementProps = {
   id?: string;
@@ -12,8 +16,12 @@ const UserManagement = (props: UserManagementProps): JSX.Element => {
     searchText: '',
   });
   return (
-    <div className="p-4" style={{ height: 1000 }}>
-      <h2 className="text-lg">😊 TODO: Please implement your component here.</h2>
+    <div className="p-4 h-100">
+        <Col className='h-100 p-0'>
+          <Main></Main>
+          <Footer></Footer>
+          <EditUserPage></EditUserPage>          
+        </Col>
     </div>
   );
 };
