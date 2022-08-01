@@ -1,0 +1,67 @@
+
+.user-infors-grid{
+    .grid-header{
+        height: 60px;
+        .h-col-name{
+            padding-left: 10px;
+            .h-col-name-title{
+                padding-left: 10px;
+            }
+        }
+    }
+
+    input[type=checkbox]{
+        margin: 0;
+    }
+
+    .row-data{
+        height:48px;
+        margin: 20px 0;
+
+        .col-name-cb{
+            padding: 0;
+        }
+
+        .col-name-card
+        {
+            padding-left: 0;
+        }
+
+        .col-progress-title{
+            padding-right: 0;
+            font-size: 14px;
+        }
+        .col-progress-bar{
+            padding-left: 0;
+        }
+
+        .edit-user-btn{
+            &::before{
+                margin-right: 6px;
+            }
+        }
+    }
+
+    .grid-footer {
+        height: 98px;
+        margin: 0 -12px;
+        background-color: white;
+        .pagination{
+            margin: 0;
+            .page-number{
+                width: 40px;
+                margin: 0 4px;
+                padding: 2px 0;
+                &:not(.active-page){
+                    border: none;
+                }
+            }
+            .active-page{
+                border: 1px solid rgb(0, 0, 255, 0.75);
+                background-color: rgb(0, 0, 255, 0.75);
+                border-radius: 6px;
+                color: white;
+            }
+        }
+    }
+}

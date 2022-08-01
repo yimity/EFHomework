@@ -4,11 +4,15 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.scss';
 import Home from './routes/home/home';
-import UserManagement from './routes/user-management/components/user-management';
+//import UserManagement from './routes/user-management/components/user-management';
+import UserManagement from './components/WorkSpace';
 import UserDetail from './routes/user-management/routes/user-detail/';
-import { store } from './store';
+//import { store } from './store';
+import { store } from './userStore'
+
 
 export const prepare = () => {
   if (process.env.NODE_ENV === 'development') {

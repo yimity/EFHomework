@@ -1,0 +1,17 @@
+.user-workspace{
+
+    .btn-add-user{
+        &::before{
+            margin-right: 8px;
+        }
+    }
+
+    .workspace-operator-bar{
+        height: 90px;
+    
+        .nav-operator{
+            margin: 0;
+        }
+    }
+}
+

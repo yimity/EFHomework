@@ -4,21 +4,41 @@ import { rest } from 'msw';
 
 const chance = new Chance();
 
+// const db = factory({
+//   userRole: {
+//     name: primaryKey(String),
+//   },
+//   user: {
+//     id: primaryKey(String),
+//     name: String,
+//     gender: Number,
+//     birthday: String,
+//     age: Number,
+//     email: String,
+//     phone: nullable(String),
+//     _index: Number,
+//   },
+// });
+
 const db = factory({
-  userRole: {
-    name: primaryKey(String),
-  },
-  user: {
-    id: primaryKey(String),
-    name: String,
-    gender: Number,
-    birthday: String,
-    age: Number,
-    email: String,
-    phone: nullable(String),
-    _index: Number,
-  },
-});
+    userRole: {
+      name: primaryKey(String),
+    },
+    user: {
+      id: primaryKey(String),
+      //photo: String,
+      firstName: String,
+      lastName: String,
+      mail: String,
+      position: Number,        //0-Seller,1-Direcor,2-Developer,3-Co-founder
+      department: Number,      //0-Human resources,1-Branding products,2-Accounting,3-Moblie App,4-IT department
+      country: String,
+      status: Number,          //0-Pending,1Active
+      porifolio: Number,       //0-100
+      role: Number,            //0-Owner, 1-Employee
+      _index: Number,
+    },
+  });
 
 const users: any[] = [];
 
@@ -27,12 +47,15 @@ function generatorRandomUsers(count: number) {
     users.push(
       db.user.create({
         id: chance.guid(),
-        name: chance.name(),
-        gender: chance.gender() === 'Female' ? 1 : 0,
-        birthday: chance.birthday().toUTCString(),
-        age: chance.age(),
-        email: chance.email(),
-        phone: chance.phone(),
+        firstName: chance.first(),
+        lastName: chance.last(),
+        mail: chance.email(),
+        position: chance.integer({ min: 0, max: 3 }),
+        department: chance.integer({ min: 0, max: 4 }),
+        country: chance.state(),
+        status: chance.integer({ min: 0, max: 10 }) === 0 ? 0 : 1,
+        porifolio: chance.integer({ min: 0, max: 100 }),
+        role: chance.integer({ min: 0, max: 10 }) === 0 ? 0 : 1,
         _index: i,
       })
     );
@@ -56,14 +79,14 @@ export const handlers = [
         take: pageSize,
         skip: (pageIndex - 1) * pageSize,
         where: {
-          name: {
+          firstName: {
             contains: searchText,
           },
         },
       });
       total = db.user.count({
         where: {
-          name: {
+          firstName: {
             contains: searchText,
           },
         },

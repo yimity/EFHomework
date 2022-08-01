@@ -1,5 +1,6 @@
 import {Link, Outlet} from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion'
+import {UserInforProps} from './WorkSpace/UserInfor';
 
 export const Layout = () => {
   return (
@@ -55,9 +56,11 @@ export const Layout = () => {
                   <span className="ps-2">Dashboard</span>
                 </h6>
               </Accordion.Header>
-              <Accordion.Body>
-                <Link to="/">首页</Link>
-              </Accordion.Body>
+              <Link to="/">
+                <Accordion.Body className={'active'}>
+                  <span className="ps-2">首页</span>
+                </Accordion.Body>
+              </Link>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
               <Accordion.Header>
@@ -66,9 +69,11 @@ export const Layout = () => {
                   <span className="ps-2">订单</span>
                 </h6>
               </Accordion.Header>
-              <Accordion.Body className={'active'}>
-                <Link to="/users">用户管理</Link>
-              </Accordion.Body>
+              <Link to="/users">
+                <Accordion.Body className={'active'}>
+                  <span className="ps-2">用户管理</span>
+                </Accordion.Body>
+              </Link>
               <Accordion.Body>
                 权限管理
               </Accordion.Body>
@@ -78,10 +83,8 @@ export const Layout = () => {
 
         <div className="body-content">
           <Outlet></Outlet>
-        </div>
-
+        </div> 
       </div>
-
     </div>
   );
 };
