@@ -3,9 +3,9 @@ import { Component } from 'react'
 export default class EditUserPage extends Component {
   render() {
     return (
-        <div className="modal modal-lg fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
         tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-scrollable border-0">
+        <div className="modal-dialog modal-lg modal-dialog-scrollable border-0">
             <div className="modal-content border-0">
                 <div className="modal-header border-0">
                     <h5 className="modal-title" id="staticBackdropLabel">Edit User</h5>
@@ -22,9 +22,9 @@ export default class EditUserPage extends Component {
                             </nav>
                         </div>
                         <div className="row">
-                            <img src="./image/image2.png" alt=''/>
+                            <img src="/image/image2.png" alt=''/>
                         </div>
-                        <div className="row">
+                        <div className="row px-3">
                             <div className="container-fluid">
                                 <div className="row p-2 my-2">
                                     <div className="col-4">

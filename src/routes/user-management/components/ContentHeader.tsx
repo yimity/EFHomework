@@ -4,8 +4,8 @@ import { Row } from 'react-bootstrap'
 export default class ContentHeader extends Component {
     render() {
         return (
-            <Row className='pt-4 justify-content-between header'>
-                <div className="col-3 pt-3 ps-4 align-self-center ms-4">
+            <Row className='p-2 justify-content-between header'>
+                <div className="col-3 p-2 align-self-center ms-4">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">Pages</li>
@@ -14,7 +14,7 @@ export default class ContentHeader extends Component {
                         </ol>
                     </nav>
                 </div>
-                <div className="col-1 align-self-center">
+                <div className="col-1 h-100 p-0 align-self-center">
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         Add user

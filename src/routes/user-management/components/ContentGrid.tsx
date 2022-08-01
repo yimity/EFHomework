@@ -3,6 +3,13 @@ import { Col, Row } from 'react-bootstrap';
 import { User } from '../interface';
 import { inLineIcons } from '../../../utils/SVGIcons';
 import './RightPage.scss'
+import { connect } from 'react-redux';
+import { UserManagementDefaultState } from '../store';
+
+interface ConnectedProps {
+	users: User[];
+	dispatch?: any;
+}
 
 const users: User[] =
   [
@@ -24,7 +31,17 @@ const gridHeaders = [
   { name: '', colWidth: 1 }
 ];
 
-export default class ContentGrid extends Component {
+// type ReduxProps = {
+//   dispatch:any;
+// }
+
+export default class ContentGrid extends Component<ConnectedProps> {
+
+  constructor(props: ConnectedProps) {
+    super(props);
+    const { dispatch } = props;
+  }
+
   render() {
     return (
       <Row className='grid mx-4 border rounded shadow-sm'>
@@ -58,10 +75,10 @@ export default class ContentGrid extends Component {
 
   renderGridRowFirstCol(user: User) {
     return (
-      <div className="col-3">
-        <div className="container-fluid">
+      <div className="col-3 p-0">
+        <div className="container-fluid p-0">
           <div className="row justify-content-start">
-            <div className="col-1 align-self-center p-0">
+            <div className="col-1 align-self-center ps-4 ms-2">
               <input className='gridCheckBox form-check-input' type="checkbox" value=""
                 aria-label="Checkbox for following text input"></input>
             </div>
@@ -84,7 +101,7 @@ export default class ContentGrid extends Component {
 
   renderGridRowData() {
     return (
-      <Col className='h-100'>
+      <div className='container-fluid align-overflow-auto'>
         {users.map(user => {
           return (
             <div className="row my-3">
@@ -114,7 +131,7 @@ export default class ContentGrid extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-2 text-muted d-flex align-items-center">
+              <div className="col-2 text-muted d-flex align-items-center ps-0">
                 <div className="row d-flex align-items-center progress-row justify-content-evenly">
                   <div className="col-3 pe-0 progress-title">
                     <span>{`${user.portfolio}%`}</span>
@@ -126,7 +143,7 @@ export default class ContentGrid extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-1 text-muted d-flex align-items-center">
+              <div className="col-1 text-muted d-flex align-items-center ps-1">
                 {user.role}
               </div>
               <div className="col-1 m-0 text-muted d-flex align-items-center">
@@ -139,13 +156,13 @@ export default class ContentGrid extends Component {
             </div>
           )
         })}
-      </Col>
+      </div>
     );
   }
 
   renderGridFooter() {
     return (
-      <div className="row text-muted m-0 p-3 border-top" id="content-table-foot">
+      <div className="row text-muted m-0 px-3 border-top" id="content-table-foot">
         <div className="container-fluid">
           <div className="row justify-content-between">
             <div className="col-2 d-flex align-items-center">
@@ -165,9 +182,7 @@ export default class ContentGrid extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-5 d-flex align-items-center">
-              <Row className='justify-content-end'>
-                <Col className='col-3'>
+            <div className="col-2 d-flex align-items-center">
                 <nav aria-label="..." className='pt-3'>
                 <ul className="pagination">
                   <li className="page-item disabled">
@@ -183,10 +198,7 @@ export default class ContentGrid extends Component {
                     <button className="page-link">Next</button>
                   </li>
                 </ul>
-              </nav>
-                </Col>
-              </Row>
-              
+              </nav>              
             </div>
           </div>
         </div>
@@ -194,3 +206,7 @@ export default class ContentGrid extends Component {
     )
   }
 }
+
+export const UserInfos = connect((state: UserManagementDefaultState) => ({
+  users: state.users,
+}))(ContentGrid);
