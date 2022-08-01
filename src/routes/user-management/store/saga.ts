@@ -1,5 +1,5 @@
 import { put, takeEvery } from "redux-saga/effects";
-import { actionCreators, GetUserInfoAction } from "./actions";
+import { actionCreators, GetUserListAction } from "./actions";
 
 interface ResponseGenerator {
     config?: any,
@@ -11,17 +11,17 @@ interface ResponseGenerator {
     json?: any,
 }
 
-interface GetUserInfoType {
+interface GetUserList {
     data: any,
 }
 
-function* initUserList(action: GetUserInfoAction) {
+function* initUserList(action: GetUserListAction) {
     const { pageIndex } = action.payload;
     const response: ResponseGenerator = yield fetch(`/users?pageIndex=${pageIndex}&pageSize=8`, {
         method: 'GET',
     });
-    const data: GetUserInfoType = yield response.json();
-    yield put(actionCreators.initUserList(data.data.data));
+    const data: GetUserList = yield response.json();
+    yield put(actionCreators.updateUsers(data.data));
 }
 
 export function* userManagementSaga() {

@@ -1,46 +1,22 @@
 import { User } from "../interface";
 
-export interface InitUserList {
-    type: 'UserManagement/InitUserList';
-    payload: {users: User[]};
-}
+export interface UpdateSingleUserAction { type: 'UserManagement/UpdateSingleUser'; payload: { user: User }; }
+export interface UpdateUsers { type: 'UserManagement/UpdateUsers'; payload: { users: User[] }; }
+export interface AddUser { type: 'UserManagement/AddUser'; payload: { user: User; }; }
+export interface GetUserListAction { type: 'UserManagement/GetUserList'; payload: { pageIndex: number }; }
 
-export interface AddUser {
-    type: 'UserManagement/AddUser';
-    payload: {user: User};
-}
+const userInfos = (pageIndex: number): GetUserListAction => ({ type: 'UserManagement/GetUserList', payload: { pageIndex } });
+const updateCurrentUser = (user: User): UpdateSingleUserAction => ({ type: 'UserManagement/UpdateSingleUser', payload: { user } });
+const updateUsers = (users: User[]): UpdateUsers => ({ type: 'UserManagement/UpdateUsers', payload: { users } });
+const addUser = (user: User): AddUser => ({ type: 'UserManagement/AddUser', payload: { user } });
 
-export interface UpdateUser {
-    type: 'UserManagement/UpdateUser';
-    payload: {user: User};
-}
-
-export type UserManagementActions = InitUserList | AddUser | UpdateUser;
+export type UserManagementActions = UpdateSingleUserAction | UpdateUsers | AddUser;
 
 export const actionCreators = {
-    initUserList: (users: User[]): InitUserList => {
-        return {
-            type: 'UserManagement/InitUserList',
-            payload: {users}
-        };
-    },
-    addUser: (user: User): AddUser => {
-        return {
-            type: 'UserManagement/AddUser',
-            payload: {user}
-        };
-    },
-    updateUser: (user: User): UpdateUser => {
-        return {
-            type: 'UserManagement/UpdateUser',
-            payload: {user}
-        };
-    }
-}
-
-export interface GetUserInfoAction { type: 'UserManagement/GetUserInfo'; payload: { pageIndex: number }; }
-
-const userInfos = (pageIndex: number): GetUserInfoAction => ({ type: 'UserManagement/GetUserInfo', payload: { pageIndex } });
+    updateCurrentUser,
+    updateUsers,
+    addUser,
+};
 
 export const sagaActions = {
     userInfos,

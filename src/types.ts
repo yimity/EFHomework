@@ -1,11 +1,14 @@
 export type User = {
-  id: string;
-  name: string;
-  gender: 0 | 1;
-  birthday: string;
-  age: number;
-  email: string;
-  phone?: string;
+  id: String,
+  name: String,
+  email: String,
+  photo: String,
+  department: String,
+  position: String,
+  country: String,
+  status: String,
+  portfolio: Number,
+  role: String,
 };
 
 export type ServiceResponse<T> = {
