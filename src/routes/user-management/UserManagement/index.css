@@ -1,0 +1,198 @@
+p {
+    margin-top: 12px !important;
+}
+
+svg {
+    padding-right: 8px;
+}
+
+.btn:hover {
+    border-color: white !important;
+}
+
+.btn:active {
+    border-color: white !important;
+}
+
+.btn:focus {
+    border-color: white !important;
+}
+
+.btn-outline-secondary {
+    height: 40px;
+    width: 75px;
+}
+
+.rounded-circle {
+    padding: 0 5px;
+}
+
+.left-bar {
+    border-right: 2px rgb(241, 243, 249) solid;
+}
+
+.left-bar-values {
+    padding-left: 44px;
+}
+
+.left-body {
+    height: 840px;
+}
+
+.left-body::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+}
+
+.left-body::-webkit-scrollbar-thumb {
+    /* border-radius: 10px; */
+    box-shadow: inset 0 0 5px rgba(222, 226, 234, 0.2);
+    background: rgb(214, 219, 226);
+}
+
+.left-body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(253, 253, 253);
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.logo {
+    margin: 0px 5px 20px 5px !important;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0 !important;
+}
+
+.logo-font {
+    width: auto !important;
+}
+
+.a-css {
+    text-decoration: none;
+}
+
+.body-info {
+    padding: 15px 0px;
+}
+
+.point-Active {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(67, 200, 165);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.point-Pending {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(240, 200, 149);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.right-body-title {
+    border-bottom: 1px solid rgb(0, 31, 144);
+}
+
+.from-check {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.right-menu {
+    height: 9.5%;
+}
+
+.right-body {
+    margin-left: 95px;
+    height: 80%;
+    width: 90% !important;
+    border: 2px solid rgb(0, 31, 144);
+    border-radius: 20px;
+}
+
+.right-lower {
+    height: 9.5%;
+}
+
+.add-user-title-row {
+    /* margin: 3px 3px; */
+    border-radius: 10px;
+    background-color: rgb(248, 250, 253);
+}
+
+.add-user-title-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 5px 5px !important;
+    border-radius: 10px;
+    background-color: rgb(248, 250, 253);
+}
+
+.add-user-title-col-hover {
+    padding: 0 0;
+    margin: 5px 5px !important;
+    /* border: 1px red solid; */
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-user-title-bg {
+    background-image: url('../public/add-user-title.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 730px;
+    height: 140px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.add-user-title-img {
+    margin-left: 330px;
+    padding-top: 80px;
+}
+
+.body-photo {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    background-color: rgb(181, 188, 208);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-lower-right {
+    padding-right: 0px;
+    padding-left: 180px;
+}
+
+.modal-body {
+    padding: 0 16px;
+}
+
+.right-body-body {
+    height: 560px;
+}
+
+.right-body-lower-button {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-user-modal-input-group-text {
+    width: 120px;
+}
