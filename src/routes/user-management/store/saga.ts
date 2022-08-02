@@ -21,9 +21,9 @@ function* initUserList(action: GetUserListAction) {
         method: 'GET',
     });
     const data: GetUserList = yield response.json();
-    yield put(actionCreators.updateUsers(data.data));
+    yield put(actionCreators.updateUsers(data.data.data));
 }
 
 export function* userManagementSaga() {
-    yield takeEvery('UserManagement/InitUserList', initUserList);
+    yield takeEvery('UserManagement/GetUserList', initUserList);
 } 
