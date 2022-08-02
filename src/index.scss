@@ -103,3 +103,21 @@ button.ant-btn {
   width: 100%;
   overflow: auto;
 }
+
+.header {
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  height: 5%;
+}
+
+.svgStyle {
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  fill: currentColor;
+  vertical-align: middle;
+}

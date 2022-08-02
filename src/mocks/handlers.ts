@@ -11,16 +11,18 @@ const db = factory({
   user: {
     id: primaryKey(String),
     name: String,
-    gender: Number,
-    birthday: String,
-    age: Number,
     email: String,
-    phone: nullable(String),
-    _index: Number,
+    photo: String,
+    department: String,
+    position: String,
+    country: String,
+    status: String,
+    portfolio: Number,
+    role: String,
   },
 });
 
-const users: any[] = [];
+const users = [];
 
 function generatorRandomUsers(count: number) {
   for (let i = 0; i < count; i++) {
@@ -28,18 +30,19 @@ function generatorRandomUsers(count: number) {
       db.user.create({
         id: chance.guid(),
         name: chance.name(),
-        gender: chance.gender() === 'Female' ? 1 : 0,
-        birthday: chance.birthday().toUTCString(),
-        age: chance.age(),
         email: chance.email(),
-        phone: chance.phone(),
-        _index: i,
+        department: chance.country(),
+        position: chance.country(),
+        country: chance.country(),
+        status: Math.floor(Math.random() * 2) === 1 ? 'Active' : 'Pending',
+        portfolio: Math.floor(Math.random() * 101),
+        role: Math.floor(Math.random() * 2) === 1 ? 'Employee' : 'Owner',
       })
     );
   }
 }
 
-generatorRandomUsers(599);
+generatorRandomUsers(6);
 
 export const handlers = [
   rest.get(`/users`, (req, res, ctx) => {

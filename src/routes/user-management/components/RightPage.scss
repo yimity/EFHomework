@@ -1,0 +1,73 @@
+.main {
+    height: 95%;
+}
+
+.progress-bar {
+    width: 70%;
+}
+.progress-title {
+    width: 20%;
+}
+.progress-row {
+    width: 100%;
+}
+
+.foot-corner-left {
+    width: 20%;
+}
+
+.foot-corner-right {
+    width: 70%;
+    align-items: center;
+}
+
+.grid {
+    height: 90%;
+    border-color: rgb(239, 240, 246);
+}
+
+
+
+.gridHeader {
+    height: 50px;
+    background-color: rgb(248, 250, 253);
+}
+
+.gridData {
+    height: calc(100% - 120px);
+}
+
+.gridFooter {
+    height: 70px;
+}
+
+.gridCheckBox {
+    margin-right: 1em;
+}
+
+.status-active {
+    width: 11px;
+    height: 11px;
+    background-color: green;
+}
+
+.status-pending {
+    width: 11px;
+    height: 11px;
+    background-color: orange;
+}
+
+.user-photo {
+    width: 35px;
+    height: 35px;
+    background-color: rgb(194, 203, 218);
+}
+
+.user-logo {
+    margin-left: 0.75em;
+    padding-top: 0.25em;
+}
+
+.grid-footer-btn {
+    height: 70%;
+}
