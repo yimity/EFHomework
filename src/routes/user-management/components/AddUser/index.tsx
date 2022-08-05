@@ -31,12 +31,12 @@ export default function AddUser() {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
   const [newUser, setNewUser] = useState(initUser);
-
+// 设置model组件开关
   const setTrue = () => setState(true);
 
   const setFalse = () => { setState(false); setNewUser(initUser); }
 
-
+// 根据输入框的值修改user信息
   const onChangeFirstName = (event: any) => {
     setNewUser((data: any) => {
       return { ...data, firstName: event.target.value }

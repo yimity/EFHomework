@@ -19,7 +19,7 @@ const initUser: UserMessage = {
   role: "",
 };
 export default function MessageCard() {
-
+  //根据store的list值渲染界面
   const UserList: Array<UserMessage> = useSelector(getUserList);
   const [index, setIndex] = useState(0);
   const [state, setState] = useState(false);
@@ -27,16 +27,16 @@ export default function MessageCard() {
   const setTrue = (event: any, index: number) => {
     setState(true); setIndex(index); setEditUser(UserList[index]);
   }
-
+  // 设置model组件开关
   const setFalse = () => { setState(false); setEditUser(initUser); }
 
   const dispatch = useDispatch();
-
+  // 删除触发状态更改
   const onClickDelete = (index: number) => {
     dispatch(createUserAction(DELETEUser, undefined, index))
     setIndex(0);
   }
-
+  // 更新修改的user信息
   const [editUser, setEditUser] = useState(UserList[index]);
   const onChangeFirstName = (event: any) => {
     setEditUser((data: any) => {
