@@ -20,11 +20,11 @@ const UserManagement = (props: UserManagementProps): JSX.Element => {
   return (
 
     <React.StrictMode>
-    <Provider store={store}>
-      <NavBar />
-      <ListForm />
-      <Footer />
-    </Provider>
+      <Provider store={store}>
+        <NavBar />
+        <ListForm />
+        <Footer />
+      </Provider>
     </React.StrictMode>
   );
 };

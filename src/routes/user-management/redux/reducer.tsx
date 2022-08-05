@@ -2,7 +2,8 @@ export const initState = {
   userList: [
     {
       id: 1,
-      name: 'Amanda Harvey',
+      name1: 'Amanda',
+      name2: ' Harvey',
       email: 'amanda@site.com',
       position: 'Director',
       tel: '15291650416',
@@ -13,7 +14,8 @@ export const initState = {
     },
     {
       id: 2,
-      name: 'Amanda Harvey',
+      name1: 'Amanda',
+      name2: ' Harvey',
       email: 'amanda@site.com',
       position: 'Director',
       tel: '15291650416',
@@ -24,7 +26,8 @@ export const initState = {
     },
     {
       id: 3,
-      name: 'Amanda Harvey',
+      name1: 'Amanda',
+      name2: ' Harvey',
       email: 'amanda@site.com',
       position: 'Director',
       tel: '15291650416',
@@ -55,6 +58,20 @@ export const reducer = (state = initState, action: any) => {
       return {
         userList: [...state.userList]
       }
+    case 'Edit':
+      let x = 0;
+      for (let i = 0; i < state.userList.length; i++) {
+        if (state.userList[i].id == action.newUser.id) {
+          x = i;
+          break;
+        }
+      }
+      state.userList.splice(x, 1);
+
+      return {
+        userList: [...state.userList, action.newUser]
+      }
+
     default:
       return initState;
   }

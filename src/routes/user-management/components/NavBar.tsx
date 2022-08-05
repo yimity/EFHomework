@@ -22,14 +22,11 @@ const NavBar = () => {
   const [status, setStatus] = useState('');
   const [portfolio, setPortfolio] = useState('');
 
-  const x = name1.valueOf();
-  const y = name2.valueOf();
-
-
   const saveUser = () => {
     const newUser = {
       id: uuids4(),
-      name: x + y,
+      name1: name1,
+      name2: name2,
       email: email,
       position: position,
       tel: phone,
