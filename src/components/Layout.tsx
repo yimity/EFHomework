@@ -1,4 +1,4 @@
-import {Link, Outlet} from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion'
 
 export const Layout = () => {
@@ -9,8 +9,8 @@ export const Layout = () => {
         <div className="container-fluid">
           <a className="navbar-brand" id="logo" href="/">
             <img alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-                 className="d-inline-block align-text-top"></img>
-            Ant Design
+              className="d-inline-block align-text-top"></img>
+            Front
           </a>
 
           <div className="d-flex justify-content-end" id="navbarColor01">

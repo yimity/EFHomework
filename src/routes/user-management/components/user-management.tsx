@@ -1,5 +1,10 @@
-import React from 'react';
 import { useGetUsersQuery } from '../rtk';
+import Footer from './Footer';
+import ListForm from './ListForm';
+import NavBar from './NavBar';
+import store from '../redux/store';
+import { Provider } from 'react-redux';
+import React from 'react';
 
 type UserManagementProps = {
   id?: string;
@@ -11,10 +16,16 @@ const UserManagement = (props: UserManagementProps): JSX.Element => {
     pageSize: 50,
     searchText: '',
   });
+
   return (
-    <div className="p-4" style={{ height: 1000 }}>
-      <h2 className="text-lg">😊 TODO: Please implement your component here.</h2>
-    </div>
+
+    <React.StrictMode>
+    <Provider store={store}>
+      <NavBar />
+      <ListForm />
+      <Footer />
+    </Provider>
+    </React.StrictMode>
   );
 };
 
