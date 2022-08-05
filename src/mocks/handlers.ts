@@ -16,6 +16,11 @@ const db = factory({
     age: Number,
     email: String,
     phone: nullable(String),
+    position: Array,
+    country: String,
+    status: Number,
+    portFolio: Number,
+    role: Number,
     _index: Number,
   },
 });
@@ -33,6 +38,11 @@ function generatorRandomUsers(count: number) {
         age: chance.age(),
         email: chance.email(),
         phone: chance.phone(),
+        position: [chance.profession({ rank: true }), chance.company()],
+        country: chance.country({ full: true }),
+        status: chance.integer({ min: 0, max: 2 }),
+        portFolio: chance.integer({ min: 30, max: 90 }),
+        role: chance.integer({ min: 0, max: 2 }),
         _index: i,
       })
     );
@@ -67,13 +77,13 @@ export const handlers = [
             contains: searchText,
           },
         },
-      })
+      });
     } else {
       data = db.user.findMany({
         take: pageSize,
         skip: (pageIndex - 1) * pageSize,
       });
-      total = db.user.count()
+      total = db.user.count();
     }
 
     return res(
@@ -81,7 +91,7 @@ export const handlers = [
       ctx.json({
         data: {
           data,
-          total
+          total,
         },
         success: true,
         errorCode: null,

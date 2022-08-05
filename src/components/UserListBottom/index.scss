@@ -1,0 +1,17 @@
+.content-bottom-box {
+  font-size: 14px;
+  width: 75%;
+  position: absolute;
+  bottom: 20px;
+
+  .content-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: gray;
+
+    .content-bottom-right .breadcrumb {
+      margin-bottom: 0;
+    }
+  }
+}
