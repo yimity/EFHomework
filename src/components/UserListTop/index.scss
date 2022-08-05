@@ -1,0 +1,23 @@
+.breadcrumb {
+  position: relative;
+  margin-bottom: 20px;
+  font-size: 14px;
+
+  .active {
+    color: black;
+  }
+
+  .breadcrumb-item {
+    a {
+      color: #998c98;
+      text-decoration: 0;
+    }
+  }
+
+  button {
+    position: absolute;
+    // top: -20px;
+    right: 0;
+    font-size: 12px;
+  }
+}

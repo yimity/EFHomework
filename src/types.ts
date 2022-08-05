@@ -1,11 +1,26 @@
-export type User = {
+type baseType = {
   id: string;
-  name: string;
-  gender: 0 | 1;
-  birthday: string;
-  age: number;
   email: string;
   phone?: string;
+  position: string[];
+  country: string;
+  status: 0 | 1 | 2;
+  portFolio: number;
+  role: 0 | 1 | 2;
+};
+
+export type User = baseType & {
+  name: string;
+};
+
+export type addUserFormType = baseType & {
+  name: string[];
+};
+
+export type PageInfoType = {
+  pageIndex: number;
+  pageSize: number;
+  searchText: string;
 };
 
 export type ServiceResponse<T> = {
